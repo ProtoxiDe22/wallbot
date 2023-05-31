@@ -216,6 +216,7 @@ def guardarRangoPrecio(message):
 
     data = get_categories(URL_CATEGORIES)
     keyboard = types.InlineKeyboardMarkup()
+    boton = types.InlineKeyboardButton(All , callback_data='categoria,' + "all"))
     for x in data['categories']:
         boton = types.InlineKeyboardButton(str(x['name']), callback_data='categoria,' + str(x['id']))
         keyboard.add(boton)
@@ -234,6 +235,8 @@ def handle_query(call):
 
 def guardarCategoria(call):
     cs.cat_ids = call.message.text
+    if call.message.text == 'all':
+        cs.cat_ids = None
     logging.info('%s', cs)
     db.add_search(cs)
     bot.send_message(call.message.chat.id, "Search saved")
