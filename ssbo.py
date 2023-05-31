@@ -50,13 +50,14 @@ def notel(chat_id, price, title, url_item, obs=None, images=None):
         text += obs
         text += ' ' + ICON_COLLISION__
     text += '\n'
-    text += 'https://es.wallapop.com/item/'
+    text += 'https://it.wallapop.com/item/'
     text += url_item
 
     #listaFotos = []
     #listaArchivos = []
 
-    #for image in images:
+    #for image in imag
+:
     #    archivo = urlparse(image['original'])
     #    nombreArchivo = os.path.basename(archivo.path)
     #    rutaArchivo = "data/media/" + nombreArchivo
@@ -133,7 +134,7 @@ def get_items(url, chat_id):
 
 def get_categories(url):
     try:
-        resp = requests.get(url=url, headers={"Accept-Language": "es-ES"})
+        resp = requests.get(url=url, headers={"Accept-Language": "it-IT"})
         data = resp.json()
         return data
     
@@ -179,10 +180,10 @@ def process_callback_categorias(call):
 
 
 def inicio(call):
-    boton_añadir = types.InlineKeyboardButton('Añadir', callback_data='añadir')
-    boton_listar = types.InlineKeyboardButton('Listar', callback_data='listar')
-    boton_borrar = types.InlineKeyboardButton('Borrar', callback_data='borrar')
-    boton_categorias = types.InlineKeyboardButton('Categorias', callback_data='categorias')
+    boton_añadir = types.InlineKeyboardButton('Add', callback_data='añadir')
+    boton_listar = types.InlineKeyboardButton('List', callback_data='listar')
+    boton_borrar = types.InlineKeyboardButton('Delete', callback_data='borrar')
+    boton_categorias = types.InlineKeyboardButton('Categories', callback_data='categorias')
 
     keyboard = types.InlineKeyboardMarkup()
     keyboard.row(boton_añadir, boton_listar)
@@ -192,7 +193,7 @@ def inicio(call):
 
 
 def añadir(call):
-    busqueda = bot.send_message(call.message.chat.id,  'Introduce la busqueda:')
+    busqueda = bot.send_message(call.message.chat.id,  'write search query:')
     bot.register_next_step_handler(busqueda, guardarBusqueda)
 
 
@@ -200,7 +201,7 @@ def guardarBusqueda(message):
     cs.chat_id = message.chat.id
     cs.kws = message.text
 
-    rangoPrecio = bot.send_message(message.chat.id,  'Introduce el rango de precio (min-max):')
+    rangoPrecio = bot.send_message(message.chat.id,  'write price range (min-max):')
     bot.register_next_step_handler(rangoPrecio, guardarRangoPrecio)
 
 
@@ -220,7 +221,7 @@ def guardarRangoPrecio(message):
         boton = types.InlineKeyboardButton(str(x['name']), callback_data='categoria,' + str(x['id']))
         keyboard.add(boton)
 
-    bot.send_message(message.chat.id, text='Selecciona una categoria', reply_markup=keyboard)
+    bot.send_message(message.chat.id, text='Select category', reply_markup=keyboard)
 
 
 @bot.callback_query_handler(func=lambda call: True)
@@ -236,17 +237,17 @@ def guardarCategoria(call):
     cs.cat_ids = call.message.text
     logging.info('%s', cs)
     db.add_search(cs)
-    bot.send_message(call.message.chat.id, "Busqueda guardada")
+    bot.send_message(call.message.chat.id, "Search saved")
 
 
 def borrar(call):
-    busquedaBorrar = bot.send_message(call.message.chat.id,  'Introduce la busqueda a borrar:')
+    busquedaBorrar = bot.send_message(call.message.chat.id,  'Select search to delete:')
     bot.register_next_step_handler(busquedaBorrar, borrarBusqueda)
 
 
 def borrarBusqueda(call):
     db.del_chat_search(call.chat.id, call.text)
-    bot.send_message(call.chat.id, "Busqueda borrada")
+    bot.send_message(call.chat.id, "Search deleted")
 
 
 def listar(call):
@@ -321,7 +322,7 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %H:%M:%S')
 
-locale.setlocale(locale.LC_ALL, 'es_ES.UTF-8')
+locale.setlocale(locale.LC_ALL, 'it_IT.UTF-8')
 
 
 # FIN
