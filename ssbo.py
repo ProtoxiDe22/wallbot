@@ -216,9 +216,9 @@ def guardarRangoPrecio(message):
 
     data = get_categories(URL_CATEGORIES)
     keyboard = types.InlineKeyboardMarkup()
-    boton = types.InlineKeyboardButton(All , callback_data='categoria,' + "all"))
+    boton = types.InlineKeyboardButton(All , callback_data='categoria,' + "all")
     for x in data['categories']:
-        boton = types.InlineKeyboardButton(str(x['name']), callback_data='categoria,' + str(x['id'])
+        boton = types.InlineKeyboardButton(str(x['name']), callback_data='categoria,' + str(x['id']))
         keyboard.add(boton)
 
     bot.send_message(message.chat.id, text='Select category', reply_markup=keyboard)
