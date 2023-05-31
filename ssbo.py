@@ -57,7 +57,6 @@ def notel(chat_id, price, title, url_item, obs=None, images=None):
     #listaArchivos = []
 
     #for image in imag
-:
     #    archivo = urlparse(image['original'])
     #    nombreArchivo = os.path.basename(archivo.path)
     #    rutaArchivo = "data/media/" + nombreArchivo
