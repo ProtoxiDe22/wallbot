@@ -1,5 +1,5 @@
-![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/tamasco/wallbot-docker) [![Docker pulls](https://img.shields.io/docker/pulls/tamasco/wallbot-docker?style=flat-square)](https://hub.docker.com/r/tamasco/wallbot-docker) [![commit_freq](https://img.shields.io/github/commit-activity/m/Borja-Garduno/wallbot?style=flat-square)](https://github.com/Borja-Garduno/wallbot/commits) [![last_commit](https://img.shields.io/github/last-commit/Borja-Garduno/wallbot?style=flat-square)](https://github.com/Borja-Garduno/wallbot/commits) ![Docker Image Version (latest by date)](https://img.shields.io/docker/v/tamasco/wallbot-docker) ![GitHub](https://img.shields.io/github/license/Borja-Garduno/wallbot)
-
+<!-- ![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/tamasco/wallbot-docker) [![Docker pulls](https://img.shields.io/docker/pulls/tamasco/wallbot-docker?style=flat-square)](https://hub.docker.com/r/tamasco/wallbot-docker) [![commit_freq](https://img.shields.io/github/commit-activity/m/Borja-Garduno/wallbot?style=flat-square)](https://github.com/Borja-Garduno/wallbot/commits) [![last_commit](https://img.shields.io/github/last-commit/Borja-Garduno/wallbot?style=flat-square)](https://github.com/Borja-Garduno/wallbot/commits) ![Docker Image Version (latest by date)](https://img.shields.io/docker/v/tamasco/wallbot-docker) ![GitHub](https://img.shields.io/github/license/Borja-Garduno/wallbot)
+ -->
 
 # wallbot
 wallapop search bot
