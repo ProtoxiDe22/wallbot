@@ -4,7 +4,7 @@ FROM python:3.8-slim-buster
 
 RUN apt-get update && \
     apt-get install -y locales && \
-    sed -i -e 's/# it_IT.UTF-8 UTF-8/IT_IT.UTF-8 UTF-8/' /etc/locale.gen && \
+    sed -i -e 's/# it_IT.UTF-8 UTF-8/it_IT.UTF-8 UTF-8/' /etc/locale.gen && \
     dpkg-reconfigure --frontend=noninteractive locales
 
 ENV LANG it_IT.UTF-8
