@@ -109,7 +109,7 @@ def get_items(url, chat_id):
             logging.info('Encontrado: id=%s, price=%s, title=%s, user=%s',str(x['id']), locale.currency(x['price'], grouping=True), x['title'], x['user']['id'])
             i = db.search_item(x['id'], chat_id)
             if i is None:
-                creationDate = datetime.fromtimestamp(x['creation_date'] / 1000).strftime('%c')
+                creationDate = datetime.fromisoformat(x['creation_date']).strftime('%c')
                 db.add_item(x['id'], chat_id, x['title'], x['price'], x['web_slug'], x['user']['id'], creationDate)
                 notel(chat_id, x['price'], x['title'], x['web_slug'], None, x['images'])
                 logging.info('New: id=%s, price=%s, title=%s', str(x['id']), locale.currency(x['price'], grouping=True), x['title'])
@@ -338,7 +338,7 @@ def wallapop():
             # Lanza las búsquedas y notificaciones ...
             get_items(u, search.chat_id)
 
-        time.sleep(300)
+        time.sleep(180)
         continue
 
 
