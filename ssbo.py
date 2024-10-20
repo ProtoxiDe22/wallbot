@@ -80,7 +80,7 @@ def notel(chat_id, price, title, url_item, obs=None, images=None):
 
 def get_url_list(search):
     url = URL_ITEMS
-    url += '?keywords='
+    url += '?source=recent_searches&longitude=12.4942&latitude=41.8905&keywords='
     url += "+".join(search.kws.split(" "))
     url += '&time_filter=today'
     if search.cat_ids is not None:
@@ -103,7 +103,7 @@ def get_url_list(search):
 
 def get_items(url, chat_id):
     try:
-        resp = requests.get(url=url)
+        resp = requests.get(url=url,headers={'Accept': '*/*', 'User-Agent': 'Wget/1.21.4','Accept-Encoding': 'identity', 'X-Deviceos': '0'})
         data = resp.json()
         for x in data['search_objects']:
             logging.info('Encontrado: id=%s, price=%s, title=%s, user=%s',str(x['id']), locale.currency(x['price'], grouping=True), x['title'], x['user']['id'])
@@ -133,7 +133,7 @@ def get_items(url, chat_id):
 
 def get_categories(url):
     try:
-        resp = requests.get(url=url, headers={"Accept-Language": "it-IT"})
+        resp = requests.get(url=url, headers={'Accept': '*/*', 'User-Agent': 'Wget/1.21.4','Accept-Encoding': 'identity', 'X-Deviceos': '0'})
         data = resp.json()
         return data
     
